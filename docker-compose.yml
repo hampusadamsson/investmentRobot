@@ -1,0 +1,18 @@
+version: '2'
+services:
+  database:
+    image: mongo:latest
+    container_name: "mongodb"
+    environment:
+       - MONGO_DATA_DIR=/data/db
+       - MONGO_LOG_DIR=/dev/null
+       - MONGODB_USER=haad
+       - MONGODB_PASS=12345
+    volumes:
+       - ./data-mongo/db:/data/db
+    ports:
+       - 27010-27012:27017-27019
+
+volumes:
+  database-data:
+
