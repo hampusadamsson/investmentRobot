@@ -1,0 +1,3 @@
+* * * * * python /app/src/collecter/Stock.py request -symbol MSFT
+
+
