@@ -1,4 +1,3 @@
-import json
 import logging
 
 import pymongo
@@ -7,7 +6,8 @@ import pymongo
 class Datamanager:
     def __init__(self):
         self.logger = logging.getLogger()
-        myclient = pymongo.MongoClient("mongodb://localhost:27017/")
+        #myclient = pymongo.MongoClient("mongodb://haad:12345@mongodb:27010/")
+        myclient = pymongo.MongoClient("mongodb://mongodb:27017/")
         mydb = myclient["portfolio"]
         self.cursor = mydb["p"]
 

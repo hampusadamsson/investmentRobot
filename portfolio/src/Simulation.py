@@ -1,8 +1,8 @@
 import logging
 from datetime import datetime, timedelta
 
-from src.domain.DefaultPortfolio import DefaultPortfolio
-from src.domain.DummyPortfolio import DummyPortfolio
+#from domain.DefaultPortfolio import DefaultPortfolio
+from domain.DummyPortfolio import DummyPortfolio
 
 
 class Simulation:
@@ -12,9 +12,10 @@ class Simulation:
         self.portfolio = None
 
     def run(self, start, stop):
+        print("Running")
         p_name = "test_portfolio31"
-        p = DefaultPortfolio()
-        # p = DummyPortfolio()
+        # p = DefaultPortfolio()
+        p = DummyPortfolio()
 
         p.init(p_name)
         p.cash = 1000
@@ -23,6 +24,7 @@ class Simulation:
         p.print()
         logging.info(p.holdings.keys())
         for date in self._get_date_between(start, stop):
+            print(date)
             yesterday = self._get_yesterday(date)
             p.load(p_name, yesterday)
             p.print()
@@ -42,7 +44,9 @@ class Simulation:
         return datetime.strftime(d - timedelta(1), '%Y-%m-%d')
 
 
+print("Start")
 s = Simulation()
-s.logger.setLevel(logging.WARN)
-s.run("2018-10-12", "2020-01-01")
+s.logger.setLevel(logging.INFO)
+s.run("2018-01-10", "2018-01-17")
 # s.run("2019-03-01", "2020-01-01")
+print("End")

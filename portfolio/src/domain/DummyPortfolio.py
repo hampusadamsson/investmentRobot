@@ -1,10 +1,7 @@
-import json
 import logging
-import operator
 import random
 
-import requests
-from src.domain.Portfolio import Portfolio
+from domain.Portfolio import Portfolio
 
 
 class DummyPortfolio(Portfolio):

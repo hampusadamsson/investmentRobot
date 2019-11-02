@@ -1,8 +1,8 @@
 import logging
 from datetime import datetime
 
-from src.Datamanager import Datamanager
-from src.Requester import Requester
+from Datamanager import Datamanager
+from Requester import Requester
 
 
 class Portfolio:

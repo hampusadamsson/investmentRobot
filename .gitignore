@@ -4,6 +4,8 @@
 *.db
 **/mlruns/
 
+data-mongo/
+
 __pycache__/
 *.py[cod]
 *$py.class

@@ -2,7 +2,7 @@ import json
 import logging
 import operator
 import requests
-from src.domain.Portfolio import Portfolio
+from domain.Portfolio import Portfolio
 
 
 IP_predictor = "127.0.0.1"

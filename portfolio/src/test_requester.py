@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from src.Requester import Requester
+from Requester import Requester
 
 
 class TestRequester(TestCase):
