@@ -13,7 +13,7 @@ class Simulation:
 
     def run(self, start, stop):
         print("Running")
-        p_name = "test_portfolio31"
+        p_name = "docker_test"
         # p = DefaultPortfolio()
         p = DummyPortfolio()
 
@@ -47,6 +47,6 @@ class Simulation:
 print("Start")
 s = Simulation()
 s.logger.setLevel(logging.INFO)
-s.run("2018-01-10", "2018-02-10")
+s.run("2018-01-01", "2019-01-01")
 # s.run("2019-03-01", "2020-01-01")
 print("End")
