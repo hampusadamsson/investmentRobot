@@ -7,7 +7,7 @@ from Requester import request_stock
 class TestRequester(TestCase):
 
     def test_request(self):
-        assert request_stock("MSFT") is not None
+        assert request_stock("AMZN") is not None
 
     def test_config(self):
         config = get_config()

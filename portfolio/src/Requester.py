@@ -7,7 +7,7 @@ class Requester:
     def __init__(self):
         self.logger = logging.getLogger()
         self.logger.setLevel(logging.INFO)
-        self.IP = "127.0.0.1"
+        self.IP = "stock_controller" #""127.0.0.1"
         self.PORT = 5001
 
     def get_health_check(self):

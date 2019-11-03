@@ -1,49 +1,63 @@
 version: '2'
 services:
-  database_stock:
-    image: mysql
-    container_name: "mysql"
-    restart: 
-       always
-    command: 
-       --init-file /data/application/init.sql
-    volumes:
-       - ./database_stock/init.sql:/data/application/init.sql
-    environment:
-       MYSQL_USER: test
-       MYSQL_PASSWORD: test
-       MYSQL_ROOT_PASSWORD: test
-       MYSQL_DATABASE: test
-    expose:
-       - 3306    
-    ports:
-       - 3306:3306
 
-  database_portfolio:
-    image: mongo:latest
-    restart: always
-    container_name: "mongodb"
-    restart:
-       always
-    environment:
-       - MONGO_DATA_DIR=/data/db
-       - MONGO_LOG_DIR=/dev/null
-       - MONGODB_USER=haad
-       - MONGODB_PASS=12345
-    volumes:
-       - ./data-mongo/db:/data/db
-    expose:
-       - 27010-27012
+ database_stock:
+  image: mysql
+  container_name: 
+   "mysql"
+  restart: 
+   always
+  command: 
+   --default-authentication-plugin=mysql_native_password
+   --init-file /data/application/init.sql
+  volumes:
+   - ./database_stock/init.sql:/data/application/init.sql
+  environment:
+   MYSQL_USER: test
+   MYSQL_PASSWORD: test
+   MYSQL_ROOT_PASSWORD: test
+   MYSQL_DATABASE: test
+  expose:
+   - 3306    
+  ports:
+   - 3306:3306
 
-  portfolio:
-    build:
-       context: ./portfolio
-    depends_on:
-       - database_portfolio
-       - controller
+ database_portfolio:
+  image: 
+   mongo:latest
+  restart: 
+   always
+  container_name: 
+   "mongodb"
+  restart:
+   always
+  environment:
+   - MONGO_DATA_DIR=/data/db
+   - MONGO_LOG_DIR=/dev/null
+   - MONGODB_USER=haad
+   - MONGODB_PASS=12345
+  volumes:
+   - ./data-mongo/db:/data/db
+  expose:
+   - 27010-27012
 
-  controller:
-    build:
-       context: ./stock_controller
-    environment:
-       - PYTHONPATH=/src/
+ portfolio:
+  build:
+   context: ./portfolio
+  depends_on:
+   - database_portfolio
+   - database_stock
+   - controller
+  environment:
+   - PYTHONPATH=/src/
+
+ controller:
+  build:
+   context: ./stock_controller
+  container_name: 
+   "stock_controller"
+  environment:
+   - PYTHONPATH=/src/
+  depends_on:
+   - database_stock
+

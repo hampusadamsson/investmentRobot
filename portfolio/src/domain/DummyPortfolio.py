@@ -24,6 +24,7 @@ class DummyPortfolio(Portfolio):
         # Buy
         symbols = self.r.get_symbols()
         amount = random.randint(0, 5)
+        amount = min(amount, len(symbols))
         selected = random.sample(symbols, amount)
         for s in selected:
             self.buy(s)

@@ -1,6 +1,6 @@
 import argparse
 
-from Data_manager import init_db, get, get_distinct
+from Data_manager import get, get_distinct
 from Requester import request_stock, request_all_stocks
 
 if __name__ == '__main__':
@@ -16,10 +16,8 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     print(args.action)
-    if args.action == "init":
-        init_db()
 
-    elif args.action == "get":
+    if args.action == "get":
         print(get(args.symbol))
 
     elif args.action == "request":

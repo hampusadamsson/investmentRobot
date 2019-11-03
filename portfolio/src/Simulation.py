@@ -47,6 +47,6 @@ class Simulation:
 print("Start")
 s = Simulation()
 s.logger.setLevel(logging.INFO)
-s.run("2018-01-10", "2018-01-17")
+s.run("2018-01-10", "2018-02-10")
 # s.run("2019-03-01", "2020-01-01")
 print("End")
