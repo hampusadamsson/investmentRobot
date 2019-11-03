@@ -25,7 +25,7 @@ def request_stock(ticker):
 
 
 def request_all_stocks():
-    delay = config["REQUESTER"]["SLEEP_BETWEEN_REQUESTS"]
+    delay = int(config["REQUESTER"]["SLEEP_BETWEEN_REQUESTS"])
     symbols = list(config["STOCKS"].keys())
     for s in symbols:
         try:

@@ -21,6 +21,8 @@ services:
    - 3306    
   ports:
    - 3306:3306
+  cap_add:
+   - SYS_NICE  # CAP_SYS_NICE
 
  database_portfolio:
   image: 
