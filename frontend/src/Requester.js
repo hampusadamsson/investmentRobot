@@ -1,14 +1,13 @@
 import React from 'react';
 import axios from 'axios';
 import Portfolio from './Portfolio';
+import './css/Requester.css';
 
 export default class Requester extends React.Component {
   constructor(props){
     super(props);
     this.state = {
       portfolioNames: [],
-      selectedPortfolio: "test_portfolio32",
-      selectedPortfolioData: null,
     }
   }
 
@@ -32,12 +31,12 @@ export default class Requester extends React.Component {
   render() {
     return (
       <div>
-        <select onChange={this.handleChange} >
+        <h2>Portfolios</h2>
+        <div className='portfolio-holders'>
           {this.state.portfolioNames.map(p =>
-            <option value={p} key={p}>{p}</option>)
-          }
-        </select>
-        <Portfolio portfolio={this.state.selectedPortfolio} />
+            <Portfolio portfolio={p} key={p}/>
+          )}
+        </div>
       </div>
     )
   }

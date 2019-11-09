@@ -1,0 +1,5 @@
+.portfolio-holders {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
