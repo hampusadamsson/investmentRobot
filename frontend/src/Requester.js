@@ -1,12 +1,15 @@
 import React from 'react';
-
 import axios from 'axios';
+import Portfolio from './Portfolio';
 
 export default class Requester extends React.Component {
-  state = {
-    portfolioNames: [],
-    selectedPortfolio: null,
-    selectedPortfolioData: null,
+  constructor(props){
+    super(props);
+    this.state = {
+      portfolioNames: [],
+      selectedPortfolio: "test_portfolio32",
+      selectedPortfolioData: null,
+    }
   }
 
   componentDidMount() {
@@ -23,18 +26,7 @@ export default class Requester extends React.Component {
     this.setState({
       selectedPortfolio: event.target.value,
     },
-    this.requestPortfolio(),
     );
-  }
-
-  requestPortfolio(){
-    let uri = `http://localhost:5003/p/` + this.state.selectedPortfolio;
-    axios.get(uri)
-      .then(res => {
-        const selectedPortfolioData = res.data;
-        this.setState({ selectedPortfolioData });
-        console.log(res);
-      })
   }
 
   render() {
@@ -45,9 +37,7 @@ export default class Requester extends React.Component {
             <option value={p} key={p}>{p}</option>)
           }
         </select>
-        <i>
-          {this.state.selectedPortfolioData}
-        </i>
+        <Portfolio portfolio={this.state.selectedPortfolio} />
       </div>
     )
   }
